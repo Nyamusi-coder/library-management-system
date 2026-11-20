@@ -1,0 +1,6 @@
+node_modules/
+dist/
+
+# Local database URL. api/.env.example stays in git.
+.env
+!.env.example

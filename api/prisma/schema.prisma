@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PATRON
+  LIBRARIAN
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String   
+  role      Role     @default(PATRON)
+  reviews   Review[]
+}
+
+model Genre {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?  
+  books       Book[]
+}
+
+model Book {
+  id          Int      @id @default(autoincrement())
+  title       String
+  author      String
+  isbn        String   @unique       // <-- ADDED for Assignment 2
+  totalCopies Int      @default(1)   // <-- ADDED for Assignment 2
+  genreId     Int
+  genre       Genre    @relation(fields: [genreId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  reviews     Review[]
+
+  @@unique([title, author])
+  @@index([genreId])
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  comment   String
+  bookId    Int
+  userId    Int
+  createdAt DateTime @default(now())
+  book      Book     @relation(fields: [bookId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@unique([userId, bookId])
+  @@index([bookId])
+  @@index([userId])
+}
