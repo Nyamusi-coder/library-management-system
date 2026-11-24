@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f6f8;
+  color: #1f2430;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.book-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #e3e6ec;
+  border-radius: 10px;
+  padding: 16px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.book-card__title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.book-card__author {
+  margin: 0 0 10px;
+  color: #5b6272;
+}
+
+.book-card__genre {
+  display: inline-block;
+  background: #e8efff;
+  color: #2f4fb8;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+}
+
+.book-card__copies {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: #5b6272;
+}
+
+.status-message {
+  text-align: center;
+  padding: 40px 0;
+  color: #5b6272;
+}
+
+.status-message--error {
+  color: #b3261e;
+}
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  flex: 1 1 260px;
+  padding: 10px 14px;
+  border: 1px solid #cfd4de;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.genre-filter {
+  padding: 10px 14px;
+  border: 1px solid #cfd4de;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #2f4fb8;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.book-detail {
+  background: #fff;
+  border: 1px solid #e3e6ec;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 640px;
+}
+
+.book-detail__title {
+  margin: 0 0 4px;
+}
+
+.book-detail__author {
+  margin: 0 0 14px;
+  color: #5b6272;
+  font-size: 1.1rem;
+}
+
+.book-detail__genre-description {
+  margin: 10px 0 0;
+  color: #5b6272;
+}
+
+.book-detail__facts {
+  display: flex;
+  gap: 32px;
+  margin: 20px 0 0;
+}
+
+.book-detail__facts dt {
+  font-size: 0.8rem;
+  color: #5b6272;
+  text-transform: uppercase;
+}
+
+.book-detail__facts dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+}
